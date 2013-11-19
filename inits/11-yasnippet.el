@@ -1,0 +1,2 @@
+;;yasnippet
+(require 'yasnippet-bundle)
