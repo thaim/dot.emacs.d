@@ -1,29 +1,35 @@
-;;load-path
-(setq load-path (append
-		 '(
-		   "~/.emacs.d/elisp"
-		   "~/.emacs.d/elisp/org"
-		   "~/.emacs.d/elisp/org-contrib"
-		   "~/.emacs.d/elisp/yatex1.76"
-		   "~/.emacs.d/auto-install"
-		   "/media/share/AppData/.emacs.d/elisp"
-		   "/media/share/AppData/.emacs.d/auto-install"
-		   "/media/share/AppData/.emacs.d/elisp/howm-1.3.9.1"
-		   "/media/share/AppData/.emacs.d/elisp/navi2ch"
-		   "/media/share/AppData/.emacs.d/elisp/ddskk"
-		   "/media/share/AppData/.emacs.d/elisp/apel"
-		   "/media/share/AppData/.emacs.d/elisp/yasnippet-0.6.1c"
-		   "/media/share/AppData/.emacs.d/elisp/calfw"
-		   "/media/share/AppData/.emacs.d/elisp/malabar"
-		   "/media/share/AppData/.emacs.d/elisp/twittering-mode"
-		   )
-		 load-path))
+;;; インストールパスの設定.emacsのバージョンごとのディレクトリに作成する
+;; el-get経由はv24.4.1/el-get, elpa経由はv24.4.1/elpaに作成する
+(let ((versioned-dir (locate-user-emacs-file (format "v%s" emacs-version))))
+  (setq-default el-get-dir (expand-file-name "el-get" versioned-dir)
+                package-user-dir (expand-file-name "elpa" versioned-dir)))
 
+;; bundle (an El-Get wrapper)
+(setq-default el-get-emacswiki-base-url
+              "http://raw.github.com/emacsmirror/emacswiki.org/master/")
+(add-to-list 'load-path (expand-file-name "bundle" el-get-dir))
 
-(require 'init-loader)
-(init-loader-load "~/.emacs.d/inits")
+;; bundleのロード.el-get/bundleが存在しなければインストール・ロードする
+(unless (require 'bundle nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "http://raw.github.com/tarao/bundle-el/master/bundle-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+(add-to-list 'el-get-recipe-path (locate-user-emacs-file "etc/recipes"))
 
+;;; init-loaderのロード
+(bundle! emacs-jp/init-loader
+	 ;; load
+	 (setq-default init-loader-show-log-after-init t
+		       init-loader-byte-compile t)
+	 (init-loader-load (locate-user-emacs-file "inits"))
+	 ;; hide compilation results / コパイルログは表示する
+;;	 (let ((win (get-buffer-window "*Compile-Log*")))
+;;	   (when win (delete-window win)))
+     )
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
+;;; インストール/実行バージョンの固定
+;; アップデートする場合はM-x el-get-update-allを実行する
+;;(el-get-bundle tarao/el-get-lock)
+;;(el-get-lock)

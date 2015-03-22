@@ -1,2 +1,2 @@
 ;;twittering-mode
-(require 'twittering-mode)
+(el-get-bundle twittering-mode)

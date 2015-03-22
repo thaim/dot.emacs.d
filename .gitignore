@@ -1,4 +1,11 @@
-;temp files
-session.*
+# elisp cache
+cache/
+
+# env depend file
+*elc
+
+# tempfile
 *~
-auto-save-list/
+
+
+

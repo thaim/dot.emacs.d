@@ -1,2 +1,3 @@
 ;;yasnippet
-(require 'yasnippet-bundle)
+;;(require 'yasnippet-bundle)
+;(bundle yasnippet-bundle)

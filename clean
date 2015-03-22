@@ -1,0 +1,18 @@
+#!/bin/sh
+
+# 一時ファイルやコンパイル済ファイルの削除
+
+rm -f *elc
+rm -f inits/*elc
+rm -f inits/*~
+
+if [ "x$1" = "x-f" ] ; then
+    # 各種elispが作成するディレクトリを削除
+    rm -rf cache
+
+    # ダウンロードしたlispの削除
+    emacs_version=v`emacs --version | head -1 | cut -d ' ' -f 3`
+    if [ -d "$emacs_version" ] ; then
+        rm -rf $emacs_version
+    fi
+fi

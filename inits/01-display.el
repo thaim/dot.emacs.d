@@ -73,7 +73,7 @@
                    '(height . 70)		 ; ウィンドウの高さ
                    '(top . 10)			 ; 表示位置
                    '(left . 700)		 ; 表示位置
-		   '(alpha . (70 70 50 30)) ; 背景の透明度(通常,非アクティブ,移動,リサイズ)
+		   '(alpha . (80 80 50 30)) ; 背景の透明度(通常,非アクティブ,移動,リサイズ)
                    )
                   initial-frame-alist)))
 (set-frame-parameter nil 'alpha '70)
@@ -83,9 +83,9 @@
 ;;;モード
 ;;ファイルとの関連付け
 ;;appendを用いて記述するとなぜか関係無い所でエラーが起こる．現在原因究明中
-(setq auto-mode-alist (cons (cons "\\.tex$" 'yatex-mode) auto-mode-alist))
+
 (setq auto-mode-alist (cons (cons "\\.java$" 'java-mode) auto-mode-alist))
 (setq auto-mode-alist (cons (cons "\\.php$" 'php-mode) auto-mode-alist))
 (setq auto-mode-alist (cons (cons "\\.js$" 'js2-mode) auto-mode-alist))
-(autoload 'yatex-mode "yatex" "Yet Another LaTeX mode" t)
+(setq auto-mode-alist (cons (cons "\\.howm$" 'howm-mode) auto-mode-alist))
 ;(autoload 'html-helper-mode "html-helper-mode" "Yet HTML" t)

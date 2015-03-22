@@ -12,7 +12,7 @@
 (global-set-key "\C-ch" 'info-lookup-symbol)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-cg" 'imenu)
-(global-set-key "\C-cs" 'my-insert-time) ;時刻スタンプ
 (global-set-key "\C-cd" 'my-insert-date) ;日付スタンプ
+(global-set-key "\C-cs" 'my-insert-time) ;時刻スタンプ
 (global-set-key "\C-c\C-i" 'indent-right)
 (global-set-key "\C-ci" 'hippie-expand)
