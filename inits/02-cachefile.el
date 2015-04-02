@@ -8,3 +8,6 @@
 
 ;;; savehist
 (setq savehist-file (expand-file-name "cache/history" user-emacs-directory))
+
+;;; url
+(setq url-configuration-directory (expand-file-name "cache/url" user-emacs-directory))
