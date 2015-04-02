@@ -1,6 +1,6 @@
 (bundle howm
   (setq-default howm-directory "~/Dropbox/documents/howm" ;howmディレクトリ
-                howm-file-name-format "%Y/%m/%Y-%m-%H%M%S.howm"
+                howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm"
                 howm-keyword-file "~/Dropbox/documents/howm/.howm-keys" ;キーワードリスト
 ;;                howm-history-file "~/docs/howm/history"
                 howm-list-title nil     ;リンクファイルでは大文字小文字を区別しない
