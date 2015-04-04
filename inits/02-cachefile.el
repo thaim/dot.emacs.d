@@ -11,3 +11,10 @@
 
 ;;; url
 (setq url-configuration-directory (expand-file-name "cache/url" user-emacs-directory))
+
+;;; howm
+(setq howm-keyword-file (expand-file-name "cache/howm/.howm-keys" user-emacs-directory)
+      howm-history-file (expand-file-name "cache/howm/.howm-history" user-emacs-directory))
+
+;;; skk
+(setq skk-user-directory (expand-file-name "cache/skk" user-emacs-directory))
