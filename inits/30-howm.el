@@ -1,4 +1,4 @@
-(bundle howm
+(el-get-bundle howm
   (setq-default howm-directory "~/Dropbox/documents/howm" ;howmディレクトリ
                 howm-file-name-format "%Y/%m/%Y-%m-%d-%H%M%S.howm"
                 howm-keyword-file "~/Dropbox/documents/howm/.howm-keys" ;キーワードリスト

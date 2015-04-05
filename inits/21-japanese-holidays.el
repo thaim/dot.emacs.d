@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  japanese-holidays                                     ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(bundle! japanese-holidays)
+(el-get-bundle! japanese-holidays)
 (setq calendar-holidays
       (append japanese-holidays holiday-local-holidays holiday-other-holidays))
 

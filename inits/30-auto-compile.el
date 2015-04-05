@@ -9,5 +9,5 @@
 
 ;;;auto-async-byte-compile
 ;;;elispを自動でバイトコンパイル
-(bundle auto-async-byte-compile)
+(el-get-bundle auto-async-byte-compile)
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)

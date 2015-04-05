@@ -1,7 +1,7 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;  calfw                                                 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(bundle calfw)
+(el-get-bundle calfw)
 (require 'calfw)
 (cfw:open-calendar-buffer)
 (setq calendar-week-start-day 0) 	;週は日曜日から開始
@@ -28,7 +28,7 @@
 
 
 ;;calfw-gcal
-(bundle calfw-gcal)
+(el-get-bundle calfw-gcal)
 (define-key cfw:calendar-mode-map (kbd "a") 'cfw:gcal-main)
 
 ;;calfw-howm

@@ -16,7 +16,7 @@
 
 
 ;;; elscreen-persist
-(bundle! elscreen-persist)
+(el-get-bundle! elscreen-persist)
 (elscreen-persist-mode 1)
 
 ;; elscreen configuration file locate in cache directory
