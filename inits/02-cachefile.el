@@ -18,3 +18,4 @@
 
 ;;; skk
 (setq skk-user-directory (expand-file-name "cache/skk" user-emacs-directory))
+(setq skk-jisyo (expand-file-name ".skk-jisyo" skk-user-directory))
