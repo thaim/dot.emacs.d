@@ -1,11 +1,14 @@
 # elisp cache
 cache/
 
+v24.3.1/
+v24.4.1
+
 # env depend file
 *elc
 
 # tempfile
 *~
-
+tramp
 
 
