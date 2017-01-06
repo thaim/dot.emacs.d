@@ -25,9 +25,13 @@
 (setq-default show-trailing-whitespace t)	;行末の空白を強調表示
 (savehist-mode 1)			;履歴を次回Emacs起動時にも保存
 (setq history-length 1000)		;履歴の保存数
+
 ;;以前開いたファイルでのカーソルの位置を保存
 (require 'saveplace)
 (setq-default save-place t)
+(custom-set-variables
+ '(save-place-file (expand-file-name "cache/places" user-emacs-directory)))
+
 (setq kill-whole-line t)		;C-kで改行も含めて切り取り
 (which-func-mode 1) 			;現在の関数名を常に表示
 (setq which-func-modes t)		;すべてのメジャーモードに対してwhich-func-modeを適用する
