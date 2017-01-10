@@ -33,10 +33,10 @@
  '(save-place-file (expand-file-name "cache/places" user-emacs-directory)))
 
 (setq kill-whole-line t)		;C-kで改行も含めて切り取り
-(which-func-mode 1) 			;現在の関数名を常に表示
-(setq which-func-modes t)		;すべてのメジャーモードに対してwhich-func-modeを適用する
-(delete (assoc 'which-func-mode mode-line-format) mode-line-format) ;画面上部に関数名を表示
-(setq-default header-line-format '(which-func-mode ("" which-func-format)))
+(which-function-mode 1) 			;現在の関数名を常に表示
+(setq which-function-mode t)		;すべてのメジャーモードに対してwhich-func-modeを適用する
+(delete (assoc 'which-function-mode mode-line-format) mode-line-format) ;画面上部に関数名を表示
+(setq-default header-line-format '(which-function-mode ("" which-func-format)))
 (delete-selection-mode 1)		; regionを選択時に[BS]orテキスト入力で選択範囲の削除
 ;; regionの色
 (setq transient-mark-mode t)
