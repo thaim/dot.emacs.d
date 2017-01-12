@@ -6,14 +6,14 @@
 
 ;; bundle (an El-Get wrapper)
 (setq-default el-get-emacswiki-base-url
-              "http://raw.github.com/emacsmirror/emacswiki.org/master/")
+              "https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/")
 (add-to-list 'load-path (expand-file-name "bundle" el-get-dir))
 
 ;; bundleのロード.el-get/bundleが存在しなければインストール・ロードする
 (unless (require 'bundle nil 'noerror)
   (with-current-buffer
       (url-retrieve-synchronously
-       "http://raw.github.com/tarao/bundle-el/master/bundle-install.el")
+       "https://raw.githubusercontent.com/tarao/bundle-el/master/bundle-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
 (add-to-list 'el-get-recipe-path (locate-user-emacs-file "etc/recipes"))
