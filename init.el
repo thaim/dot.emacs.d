@@ -4,6 +4,11 @@
   (setq-default el-get-dir (expand-file-name "el-get" versioned-dir)
                 package-user-dir (expand-file-name "elpa" versioned-dir)))
 
+;; proxy configuration
+;; (setq url-proxy-services
+;;       '(("http"  . "proxy.example.com:8080")
+;;         ("https" . "proxy.example.com:8080")))
+
 ;; bundle (an El-Get wrapper)
 (setq-default el-get-emacswiki-base-url
               "https://raw.githubusercontent.com/emacsmirror/emacswiki.org/master/")
