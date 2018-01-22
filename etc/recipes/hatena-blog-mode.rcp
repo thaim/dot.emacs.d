@@ -1,0 +1,5 @@
+(:name hatena-blog-mode
+       :type github
+       :pkgname "fnwiya/hatena-blog-mode"
+       :description "Hatena Blog API Library for Emacs"
+       :website "https://github.com/fnwiya/hatena-blog-mode")
