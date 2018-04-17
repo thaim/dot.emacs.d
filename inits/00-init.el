@@ -2,8 +2,13 @@
 (set-language-environment 'Japanese)
 (prefer-coding-system 'utf-8)
 
+;;check if target font exist
+(defun font-exists-p (font)
+  (if (null (x-list-fonts  font)) nil t))
+
 ;;;フォント
-(set-frame-font "ricty-12")
+(if (font-exists-p "ricty-12")
+    (set-frame-font "ricty-12"))
 ;; (set-fontset-font "fontset-default"
 ;;         'japanese-jisx0208
 ;;         '("ＭＳ ゴシック" . "jisx0208-sjis"))
