@@ -4,6 +4,12 @@
   (setq-default el-get-dir (expand-file-name "el-get" versioned-dir)
                 package-user-dir (expand-file-name "elpa" versioned-dir)))
 
+(setq package-archive
+      '(("gnu"   . "http://elpa.gnu.org/packages/")
+        ("melpa" . "http://melpa.org/packages/")
+        ("org"   . "http://orgmode.org/elpa/")))
+(package-initialize)
+
 ;; proxy configuration
 ;; (setq url-proxy-services
 ;;       '(("http"  . "proxy.example.com:8080")
