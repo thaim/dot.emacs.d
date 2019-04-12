@@ -1,3 +1,9 @@
+;;; jedi for python auto completion
+(el-get-bundle! jedi)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:complete-on-dot t)
+
+
 ;;;python
 ;;python.el
 ;; (require 'python-mode)
