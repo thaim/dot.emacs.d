@@ -14,7 +14,7 @@
                 howm-view-summary-persistent nil ;RET でファイルを開く際, 一覧バッファを消す.C-u RET なら残る.
                 )
   (setq auto-mode-alist (append '(("\\.howm$" . rdoc-mode)) auto-mode-alist))
-  (add-hook 'howm-mode-on-hook 'auto-fill-mode) ;howm の時は auto-fill で
+  ;; (add-hook 'howm-mode-on-hook 'auto-fill-mode) ;howm の時は自動改行を無効にする
   (global-set-key (kbd "C-c , ,") #'howm-menu))
 
 ;; 内容が 0 ならファイルごと削除する
