@@ -1,4 +1,4 @@
-(el-get-bundle! go-mode)
+(el-get-bundle go-mode)
 (el-get-bundle! company-go)
 
 ;; Goのパスを通す
