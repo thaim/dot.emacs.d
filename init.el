@@ -5,9 +5,9 @@
                 package-user-dir (expand-file-name "elpa" versioned-dir)))
 
 (setq package-archive
-      '(("gnu"   . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.org/packages/")
-        ("org"   . "http://orgmode.org/elpa/")))
+      '(("gnu"   . "https://elpa.gnu.org/packages/")
+        ("melpa" . "https://melpa.org/packages/")
+        ("org"   . "https://orgmode.org/elpa/")))
 (package-initialize)
 
 ;; proxy configuration
