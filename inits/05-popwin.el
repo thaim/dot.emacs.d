@@ -1,6 +1,9 @@
 (el-get-bundle! popwin)
 
-(setq display-buffer-function 'popwin:display-buffer)
+(popwin-mode 1)
+(setq pop-up-windows nil)
+(setq anything-samewindow nil)
+
 ; show popup window in bottom
 (setq popwin:popup-window-position 'bottom)
 
