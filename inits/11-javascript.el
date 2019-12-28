@@ -31,3 +31,10 @@
 
 (add-to-list 'auto-mode-alist
              '("\\.js$" . js-mode))
+
+
+;;; TypeScript
+(el-get-bundle! 'typescript-mode)
+
+(add-to-list 'auto-mode-alist
+             '("\\.ts$" . typescript-mode))
