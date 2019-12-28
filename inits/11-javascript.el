@@ -28,3 +28,6 @@
 
 ;; js-modeの起動時にhookを追加
 (add-hook 'js-mode-hook 'js-indent-hook)
+
+(add-to-list 'auto-mode-alist
+             '("\\.js$" . js-mode))
