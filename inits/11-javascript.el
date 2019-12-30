@@ -7,7 +7,7 @@
 
 ;; 書籍: Emacs実践入門に記載のjs-modeインデント設定
 (defun js-indent-hook ()
-  ;; インデント幅を4にする
+  ;; インデント幅をスペース2つに設定
   (setq js-indent-level 2
         js-expr-indent-offset 2
         indent-tabs-mode nil)
@@ -24,8 +24,17 @@
            (when (> offset 0) (forward-char offset))))
   ;; caseラベルのインデント処理をセットする
   (set (make-local-variable 'indent-line-function) 'my-js-indent-line)
-  ;; ここまでcaseラベルを調整する設定
   )
 
 ;; js-modeの起動時にhookを追加
 (add-hook 'js-mode-hook 'js-indent-hook)
+
+(add-to-list 'auto-mode-alist
+             '("\\.js$" . js-mode))
+
+
+;;; TypeScript
+(el-get-bundle! 'typescript-mode)
+
+(add-to-list 'auto-mode-alist
+             '("\\.ts$" . typescript-mode))
