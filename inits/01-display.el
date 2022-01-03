@@ -82,7 +82,7 @@
                   initial-frame-alist)))
 (set-frame-parameter nil 'alpha '70)
 (setq default-frame-alist initial-frame-alist)
-
+(setq truncate-partial-width-windows nil) ;split-windowもで文字の折り返しを有効にする
 
 ;;;モード
 ;;ファイルとの関連付け
