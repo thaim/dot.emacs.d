@@ -1,7 +1,7 @@
 ;;;skk
 (el-get-bundle 'ddskk)
 (setq default-input-method "japanese-skk")
-(setq-default skk-kutouten-type 'en)		      ;句読点をピリオド、コンマに
+(setq-default skk-kutouten-type 'jp)
 
 ;;パス設定
 ;(setq skk-tut-file "~/.emacs.d/elisp/ddskk") ;チュートリアルパス
