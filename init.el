@@ -29,6 +29,13 @@
     (eval-print-last-sexp)))
 (add-to-list 'el-get-recipe-path (locate-user-emacs-file "etc/recipes"))
 
+
+;; use-package がなければインストールして有効化する
+(when (not (package-installed-p 'use-package))
+  (package-install 'use-package))
+(require 'use-package)
+
+
 ;;; init-loaderのロード
 (bundle! emacs-jp/init-loader
 	 ;; load
