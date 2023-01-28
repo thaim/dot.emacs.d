@@ -57,16 +57,8 @@
 
 ;;; init-loaderのロード
 (bundle! emacs-jp/init-loader
-	 ;; load
 	 (setq-default init-loader-show-log-after-init t
 		       init-loader-byte-compile t)
 	 (init-loader-load (locate-user-emacs-file "inits"))
-	 ;; hide compilation results / コパイルログは表示する
-;;	 (let ((win (get-buffer-window "*Compile-Log*")))
-;;	   (when win (delete-window win)))
      )
 
-;;; インストール/実行バージョンの固定
-;; アップデートする場合はM-x el-get-update-allを実行する
-;;(el-get-bundle tarao/el-get-lock)
-;;(el-get-lock)
