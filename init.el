@@ -33,7 +33,7 @@
 
 
 ;; use-package がなければインストールして有効化する
-(when (not (package-installed-p 'use-package))
+(unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
 
