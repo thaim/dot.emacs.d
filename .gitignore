@@ -12,5 +12,8 @@ v[0-9.]*/
 *~
 tramp
 
+# ignore custom.el for package-selected-packages
+/custom.el
+
 # python venv
 /.python-environments

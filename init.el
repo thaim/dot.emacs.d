@@ -4,6 +4,11 @@
   (setq-default el-get-dir (expand-file-name "el-get" versioned-dir)
                 package-user-dir (expand-file-name "elpa" versioned-dir)))
 
+;; package-selected-packages は custom.elに追記する
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 (setq package-archive
       '(("gnu"   . "https://elpa.gnu.org/packages/")
         ("melpa" . "https://melpa.org/packages/")
