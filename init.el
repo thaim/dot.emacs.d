@@ -49,12 +49,6 @@
 (add-to-list 'el-get-recipe-path (locate-user-emacs-file "etc/recipes"))
 
 
-;; use-package がなければインストールして有効化する
-(unless (package-installed-p 'use-package)
-  (package-install 'use-package))
-(require 'use-package)
-
-
 ;;; init-loaderのロード
 (bundle! emacs-jp/init-loader
 	 (setq-default init-loader-show-log-after-init t
