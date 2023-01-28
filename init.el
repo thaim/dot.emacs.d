@@ -16,10 +16,6 @@
 (package-initialize)
 (unless package-archive-contents (package-refresh-contents))
 
-;; proxy configuration
-;; (setq url-proxy-services
-;;       '(("http"  . "proxy.example.com:8080")
-;;         ("https" . "proxy.example.com:8080")))
 
 ;; bundle (an El-Get wrapper)
 (setq-default el-get-emacswiki-base-url
