@@ -4,16 +4,35 @@
   (setq-default el-get-dir (expand-file-name "el-get" versioned-dir)
                 package-user-dir (expand-file-name "elpa" versioned-dir)))
 
-(setq package-archive
-      '(("gnu"   . "https://elpa.gnu.org/packages/")
-        ("melpa" . "https://melpa.org/packages/")
-        ("org"   . "https://orgmode.org/elpa/")))
-(package-initialize)
+;; package-selected-packages は custom.elに追記する
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file)
+  (load custom-file))
 
-;; proxy configuration
-;; (setq url-proxy-services
-;;       '(("http"  . "proxy.example.com:8080")
-;;         ("https" . "proxy.example.com:8080")))
+
+;; leaf.elのセットアップ
+(eval-and-compile
+  (customize-set-variable
+   'package-archives '(("org"   . "https://orgmode.org/elpa/")
+                       ("melpa" . "https://melpa.org/packages/")
+                       ("gnu"   . "https://elpa.gnu.org/packages/")))
+  (package-initialize)
+  (unless (package-installed-p 'leaf)
+    (package-refresh-contents)
+    (package-install 'leaf))
+
+  (leaf leaf-keywords
+    :ensure t
+    :init
+    ;; optional packages if you want to use :hydra, :el-get, :blackout,,,
+    (leaf hydra :ensure t)
+    (leaf el-get :ensure t)
+    (leaf blackout :ensure t)
+
+    :config
+    ;; initialize leaf-keywords.el
+    (leaf-keywords-init)))
+
 
 ;; bundle (an El-Get wrapper)
 (setq-default el-get-emacswiki-base-url
@@ -31,23 +50,15 @@
 
 
 ;; use-package がなければインストールして有効化する
-(when (not (package-installed-p 'use-package))
+(unless (package-installed-p 'use-package)
   (package-install 'use-package))
 (require 'use-package)
 
 
 ;;; init-loaderのロード
 (bundle! emacs-jp/init-loader
-	 ;; load
 	 (setq-default init-loader-show-log-after-init t
 		       init-loader-byte-compile t)
 	 (init-loader-load (locate-user-emacs-file "inits"))
-	 ;; hide compilation results / コパイルログは表示する
-;;	 (let ((win (get-buffer-window "*Compile-Log*")))
-;;	   (when win (delete-window win)))
      )
 
-;;; インストール/実行バージョンの固定
-;; アップデートする場合はM-x el-get-update-allを実行する
-;;(el-get-bundle tarao/el-get-lock)
-;;(el-get-lock)
