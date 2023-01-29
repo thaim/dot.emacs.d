@@ -3,13 +3,15 @@
 
 ;; lspのセットアップ
 ;; hookで各言語のセットアップが必要？
-(use-package lsp-mode
+(leaf lsp-mode
   :ensure t
   :init (yas-global-mode)
-  :hook (rust-mode . lsp)
+  :hook
+  (rust-mode-hook . lsp)
   :bind ("C-c h" . lsp-describe-thing-at-point)
   :custom (lsp-rust-server 'rust-analyzer))
 
 
-(use-package lsp-ui
-  :ensure t)
+(leaf lsp-ui
+  :ensure t
+  )
