@@ -1,8 +1,3 @@
-;;;skk
-;(el-get-bundle 'ddskk)
-;(setq default-input-method "japanese-skk")
-;(setq-default skk-kutouten-type 'jp)
-
 (leaf ddskk
   :ensure t
   :bind (("C-x C-j" . skk-mode)
