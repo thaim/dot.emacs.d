@@ -1,15 +1,13 @@
-;;;skk
-(el-get-bundle 'ddskk)
-(setq default-input-method "japanese-skk")
-(setq-default skk-kutouten-type 'jp)
-
-;;パス設定
-;(setq skk-tut-file "~/.emacs.d/elisp/ddskk") ;チュートリアルパス
-(setq skk-large-jisyo "~/.emacs.d/etc/skk/SKK-JISYO.L")	      ;Large辞書パス
-;;(setq skk-jisyo "~/.skk-jisyo")	      ;個人用辞書パス
-;(setq Info-default-directory-list (cons "/media/share/AppData/.emacs.d/info" Info-default-directory-list)) ;infoディレクトリの
-
-;;キーバインド設定
-(global-set-key "\C-x\C-j" 'skk-mode)		      ;skkモードキー
-(global-set-key "\C-xj" 'skk-mode)		      ;skkモードキー
-(global-set-key "\C-xt" 'skk-tutorial)		      ;チュートリアルモードキー
+(leaf ddskk
+  :ensure t
+  :bind (("C-x C-j" . skk-mode)
+         ("C-x j" . skk-mode)
+         ("C-x t" . 'skk-tutorial)
+         )
+  :custom (
+           (default-input-method "japanese-skk")
+           (skk-kutouten-type . 'jp) ;句読点には「、。」を利用する (デフォルト挙動だが明記する)
+           (skk-tut-file . "~/.emacs.d/elisp/ddskk") ;チュートリアルパス
+           (skk-large-jisho . "~/.emacs.d/etc/skk/SKK-JISYO.L") ;Large辞書パス
+           (skk-jisyo . "~/.emacs.d/cache/skk/.skk-jisyo") ;個人用辞書パス
+           ))
