@@ -6,10 +6,12 @@
 (leaf lsp-mode
   :ensure t
   :init (yas-global-mode)
-  :hook (rust-mode . lsp)
+  :hook
+  (rust-mode-hook . lsp)
   :bind ("C-c h" . lsp-describe-thing-at-point)
   :custom (lsp-rust-server 'rust-analyzer))
 
 
 (leaf lsp-ui
-  :ensure t)
+  :ensure t
+  )
