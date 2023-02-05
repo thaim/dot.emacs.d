@@ -41,4 +41,8 @@
   :mode ("\\.howm$")
   :hook
   (org-mode-hook . howm-mode)
+  :custom
+  ; orgファイルを開いたときは第2レベルまで開いた状態にする
+  ; https://orgmode.org/manual/Initial-visibility.html
+  (org-startup-folded . 'show2levels)
   )
