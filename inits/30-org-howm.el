@@ -1,3 +1,4 @@
+;;; howm
 (leaf howm
   :ensure t
   :bind
@@ -16,9 +17,8 @@
   (howm-menu-schedule-days-before . 21) ;メニューの予定表の表示範囲
   (howm-menu-schedule-days . 7) ;スケジュールを表示する日数
   (howm-view-summary-persistent . nil) ;RET でファイルを開く際, 一覧バッファを消す.C-u RET なら残る.
+  (howm-todo-menu-types . "[-+~!]") ;完了済みToDoは非表示
 )
-
-;  (setq auto-mode-alist (append '(("\\.howm$" . rdoc-mode)) auto-mode-alist))
 
 ;; 内容が 0 ならファイルごと削除する
 (if (not (memq 'delete-file-if-no-contents after-save-hook))
@@ -34,17 +34,9 @@
 
 
 
-;;;; original
-;; (bundle howm
-;;   (with-eval-after-load-feature 'howm-vars
-;;        (set-face-background 'howm-view-name-face "DimGray")))
-
-
-;;org-mode
+;;; org-mode
 
 (require 'org)
 (setq org-modules (append org-modules '(org-odt))) ;ODT機能(開発中)を有効化
 (add-hook 'org-mode-hook 'howm)
 (add-to-list 'auto-mode-alist '("\\.howm$" . org-mode))
-;(setq howm-view-title-header "=")
-(setq howm-todo-menu-types "[-+~!]")	;完了済みToDoは非表示
