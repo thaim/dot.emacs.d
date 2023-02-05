@@ -16,8 +16,7 @@
   (howm-menu-schedule-days-before . 21) ;メニューの予定表の表示範囲
   (howm-menu-schedule-days . 7) ;スケジュールを表示する日数
   (howm-view-summary-persistent . nil) ;RET でファイルを開く際, 一覧バッファを消す.C-u RET なら残る.
-  )
-
+)
 
 ;  (setq auto-mode-alist (append '(("\\.howm$" . rdoc-mode)) auto-mode-alist))
 
