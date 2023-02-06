@@ -8,6 +8,7 @@
   :init (yas-global-mode)
   :hook
   (rust-mode-hook . lsp)
+  (go-mode-hook . lsp)
   :bind ("C-c h" . lsp-describe-thing-at-point)
   :custom (lsp-rust-server 'rust-analyzer))
 
