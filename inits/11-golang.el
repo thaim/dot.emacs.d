@@ -1,10 +1,14 @@
-(el-get-bundle go-mode)
+;;; go-mode
+
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/"))  ; Goのパスを通す
+(add-to-list 'exec-path (expand-file-name "bin/"))  ; go get で入れたツールのパスを通す
+
+(leaf go-mode
+  :ensure t
+  )
+
 (el-get-bundle! company-go)
 
-;; Goのパスを通す
-(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/"))
-;; go get で入れたツールのパスを通す
-(add-to-list 'exec-path (expand-file-name "bin/"))
 
 ;; flycheck-modeを有効化してシンタックスエラーを検知
 (add-hook 'go-mode-hook 'flycheck-mode)
