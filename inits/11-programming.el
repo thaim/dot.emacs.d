@@ -1,10 +1,25 @@
-(el-get-bundle go-mode)
-(el-get-bundle! company-go)
+;;;;
+;;;; for golang
+;;;;
 
-;; Goのパスを通す
-(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/"))
-;; go get で入れたツールのパスを通す
-(add-to-list 'exec-path (expand-file-name "bin/"))
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/")) ; goのインストールパス
+(add-to-list 'exec-path (expand-file-name "~/bin/")) ;; go get で入れたツールのパスを通す
+
+
+(leaf go-mode
+  :ensure t
+  :bind
+  ("M-." . godef-jump)
+  :hook
+  (before-save-hook . gofmt-before-save)
+  :custom
+  (indent-tabs-mode . nil)
+  (tab-width . 4)
+  (c-basic-offset . 4)
+  )
+
+
+(el-get-bundle! company-go)
 
 ;; flycheck-modeを有効化してシンタックスエラーを検知
 (add-hook 'go-mode-hook 'flycheck-mode)
@@ -15,14 +30,6 @@
        (setq indent-tabs-mode t)    ; タブを利用
        (setq c-basic-offset 4)    ; tabサイズを4にする
        (setq tab-width 4)))
-
-;; ミニバッファに関数の引数リストを表示する
-(el-get-bundle! go-eldoc)
-(add-hook 'go-mode-hook 'go-eldoc-setup)
-(set-face-attribute 'eldoc-highlight-function-argument nil
-                    :underline t
-                    :foreground "green"
-                    :weight 'bold)
 
 ;; company-modeとの連携してコード補完する
 (add-hook 'go-mode-hook (lambda()

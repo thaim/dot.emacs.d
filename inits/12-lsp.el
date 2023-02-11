@@ -16,3 +16,7 @@
 (leaf lsp-ui
   :ensure t
   )
+
+(leaf company-lsp
+  :ensure t
+  )
