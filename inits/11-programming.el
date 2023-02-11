@@ -1,14 +1,25 @@
-;;; go-mode
+;;;;
+;;;; for golang
+;;;;
 
-(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/"))  ; Goのパスを通す
-(add-to-list 'exec-path (expand-file-name "bin/"))  ; go get で入れたツールのパスを通す
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin/")) ; goのインストールパス
+(add-to-list 'exec-path (expand-file-name "~/bin/")) ;; go get で入れたツールのパスを通す
+
 
 (leaf go-mode
   :ensure t
+  :bind
+  ("M-." . godef-jump)
+  :hook
+  (before-save-hook . gofmt-before-save)
+  :custom
+  (indent-tabs-mode . nil)
+  (tab-width . 4)
+  (c-basic-offset . 4)
   )
 
-(el-get-bundle! company-go)
 
+(el-get-bundle! company-go)
 
 ;; flycheck-modeを有効化してシンタックスエラーを検知
 (add-hook 'go-mode-hook 'flycheck-mode)
