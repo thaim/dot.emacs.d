@@ -17,12 +17,12 @@
        (setq tab-width 4)))
 
 ;; ミニバッファに関数の引数リストを表示する
-(el-get-bundle! go-eldoc)
-(add-hook 'go-mode-hook 'go-eldoc-setup)
-(set-face-attribute 'eldoc-highlight-function-argument nil
-                    :underline t
-                    :foreground "green"
-                    :weight 'bold)
+; (el-get-bundle! go-eldoc)
+; (add-hook 'go-mode-hook 'go-eldoc-setup)
+; (set-face-attribute 'eldoc-highlight-function-argument nil
+;                     :underline t
+;                     :foreground "green"
+;                    :weight 'bold)
 
 ;; company-modeとの連携してコード補完する
 (add-hook 'go-mode-hook (lambda()
