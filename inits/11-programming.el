@@ -9,7 +9,8 @@
 (leaf go-mode
   :ensure t
   :bind
-  ("M-." . godef-jump)
+  ("M-." . godef-jump)  ; 関数定義にジャンプ
+  ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
   :hook
   (before-save-hook . gofmt-before-save)
   :custom
