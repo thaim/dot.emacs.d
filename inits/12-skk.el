@@ -14,5 +14,6 @@
            (skk-tut-file . "~/.emacs.d/elisp/ddskk") ;チュートリアルパス
            (skk-large-jisho . "~/.emacs.d/etc/skk/SKK-JISYO.L") ;Large辞書パス
            (skk-jisyo . "~/.emacs.d/cache/skk/.skk-jisyo") ;個人用辞書パス
-           (skk-extra-jisyo-file-list '("~/.emacs.d/etc/skk/SKK-JISYO.[a-z]+")) ;;追加辞書
+           (skk-extra-jisyo-file-list . (mapcar (lambda (f) (concat "~/.emacs.d/etc/skk/" f))
+                                                (directory-files "~/.emacs.d/etc/skk/" nil "SKK-JISYO\\.[a-z]+"))) ;;追加辞書
            ))
