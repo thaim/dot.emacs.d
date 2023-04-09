@@ -1,5 +1,5 @@
 ; 辞書ファイルを事前に ~/.emacs.d/etc/skk/ 以下に配置する。
-; 辞書フィアルは http://openlab.ring.gr.jp/skk/wiki/wiki.cgi?page=SKK%BC%AD%BD%F1 から取得する。
+; 辞書フィアルは https://github.com/skk-dev/dict から取得する。
 ; geo/jinmei/propernoun など
 
 (leaf ddskk
