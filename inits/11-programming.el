@@ -1,4 +1,32 @@
 ;;;;
+;;;; common
+;;;;
+
+;; GitHub Copilot
+(leaf copilot
+  :el-get (copilot
+           :type github
+           :pkgname "zerolfx/copilot.el"
+           )
+  :config
+  (leaf editorconfig
+    :ensure t
+    )
+  (leaf s
+    :ensure t
+    )
+  (leaf dash
+    :ensure t
+    )
+  (defun my/copilot-tab ()
+    (interactive)
+    (or (copilot-accept-completion)
+        (indent-for-tab-command)))
+  (with-eval-after-load 'copilot
+    (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
+  )
+
+;;;;
 ;;;; for golang
 ;;;;
 
@@ -21,6 +49,10 @@
 
 
 (el-get-bundle! company-go)
+
+
+;; copilotの有効化
+(add-hook 'go-mode-hook 'copilot-mode)
 
 ;; flycheck-modeを有効化してシンタックスエラーを検知
 (add-hook 'go-mode-hook 'flycheck-mode)
@@ -49,3 +81,17 @@
       (define-key company-active-map [tab] 'company-complete-selection) ;; TABで候補を設定
       (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
       ))
+
+
+;;;;
+;;;; for terraform
+;;;;
+
+(leaf terraform-mode
+  :ensure t
+  :hook
+  (terraform-mode-hook . terraform-format-on-save-mode)
+  )
+
+;; copilotの有効化
+(add-hook 'terraform-mode-hook 'copilot-mode)
