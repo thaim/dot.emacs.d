@@ -82,6 +82,12 @@
       (define-key emacs-lisp-mode-map (kbd "C-M-i") 'company-complete) ;; 各種メジャーモードでも C-M-iで company-modeの補完を使う
       ))
 
+;;;;
+;;;; for protocol buffers
+;;;;
+(leaf protobuf-mode
+  :ensure t
+)
 
 ;;;;
 ;;;; for terraform
