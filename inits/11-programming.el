@@ -26,6 +26,29 @@
     (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
   )
 
+;; lsp-mode
+(leaf lsp-mode
+  :ensure t
+  :init (yas-global-mode)
+  :hook
+  (rust-mode-hook . lsp)
+  (go-mode-hook . lsp)
+  :bind ("C-c h" . lsp-describe-thing-at-point)
+  :custom (lsp-rust-server 'rust-analyzer))
+
+
+(leaf lsp-ui
+  :ensure t
+  :hook
+  (lsp-mode-hook . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-enable . t)
+  )
+
+(leaf company-lsp
+  :ensure t
+  )
+
 ;;;;
 ;;;; for golang
 ;;;;
