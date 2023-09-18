@@ -64,6 +64,7 @@
   ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
   :hook
   (before-save-hook . gofmt-before-save)
+  (go-mode-hook . lsp-deferred)
   :custom
   (indent-tabs-mode . nil)
   (tab-width . 4)
@@ -120,6 +121,7 @@
   :ensure t
   :hook
   (terraform-mode-hook . terraform-format-on-save-mode)
+  (terraform-mode-hook . lsp-deferred)
   )
 
 ;; copilotの有効化
