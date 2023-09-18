@@ -26,6 +26,29 @@
     (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
   )
 
+;; lsp-mode
+(leaf lsp-mode
+  :ensure t
+  :init (yas-global-mode)
+  :hook
+  (rust-mode-hook . lsp)
+  (go-mode-hook . lsp)
+  :bind ("C-c h" . lsp-describe-thing-at-point)
+  :custom (lsp-rust-server 'rust-analyzer))
+
+
+(leaf lsp-ui
+  :ensure t
+  :hook
+  (lsp-mode-hook . lsp-ui-mode)
+  :custom
+  (lsp-ui-doc-enable . t)
+  )
+
+(leaf company-lsp
+  :ensure t
+  )
+
 ;;;;
 ;;;; for golang
 ;;;;
@@ -41,6 +64,7 @@
   ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
   :hook
   (before-save-hook . gofmt-before-save)
+  (go-mode-hook . lsp-deferred)
   :custom
   (indent-tabs-mode . nil)
   (tab-width . 4)
@@ -97,6 +121,7 @@
   :ensure t
   :hook
   (terraform-mode-hook . terraform-format-on-save-mode)
+  (terraform-mode-hook . lsp-deferred)
   )
 
 ;; copilotの有効化
