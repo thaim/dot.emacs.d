@@ -126,3 +126,13 @@
 
 ;; copilotの有効化
 (add-hook 'terraform-mode-hook 'copilot-mode)
+
+;;;;
+;;;; for Python
+;;;;
+(leaf lsp-pyright
+  :ensure t
+  :after python
+  :hook
+  (python-mode-hook . lsp)
+  )
