@@ -136,3 +136,12 @@
   :hook
   (python-mode-hook . lsp)
   )
+
+;;;;
+;;;; for ansible
+;;;;
+(leaf ansible
+  :ensure t
+  :hook
+  (ansible-mode-hook . lsp)
+  )
