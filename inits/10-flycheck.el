@@ -1,3 +1,7 @@
-(el-get-bundle! flycheck)
+(leaf flycheck
+  :ensure t
+  )
 
-(el-get-bundle! flymake-easy)
+(leaf flymake-easy
+  :ensure t
+  )
