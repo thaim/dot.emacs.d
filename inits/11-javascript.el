@@ -34,7 +34,9 @@
 
 
 ;;; TypeScript
-(el-get-bundle! 'typescript-mode)
+(leaf typescript-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.ts$" . typescript-mode))
+  )
 
-(add-to-list 'auto-mode-alist
-             '("\\.ts$" . typescript-mode))
