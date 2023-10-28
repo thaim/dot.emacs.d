@@ -1,4 +1,5 @@
-(el-get-bundle! markdown-mode)
-
-(add-to-list 'auto-mode-alist
-             '("\\.md\\'" . markdown-mode))
+(leaf markdown-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  )
