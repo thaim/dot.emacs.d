@@ -1,7 +1,9 @@
 ;; php
 
 ;;(load-library "php-mode")
-(el-get-bundle! php-mode)
+(leaf php-mode
+  :ensure t
+  )
 
 ;;(add-to-list 'auto-mode-alist '("\\.rdf\\'" . xml-mode))
 
