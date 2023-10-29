@@ -33,6 +33,23 @@
     ;; initialize leaf-keywords.el
     (leaf-keywords-init)))
 
+(leaf leaf
+  :config
+  ;; leafで書かれたinit.elの構造を表示してくれる。 M-x leaf-tree-mode で実行する。
+  ;; https://qiita.com/conao3/items/347d7e472afd0c58fbd7#leaf-tree
+  (leaf leaf-tree
+    :ensure t
+    :custom ((imenu-list-size . 30)
+             (imenu-list-poisition . 'left)))
+
+  ;; マクロを読み取り専用のバッファに展開する
+  ;; https://qiita.com/conao3/items/347d7e472afd0c58fbd7#macrostep
+  (leaf macrostep
+    :ensure t
+    :bind
+    (("C-c e" . macrostep-expand))
+  )
+)
 
 ;;; init-loaderのロード
 (leaf init-loader
