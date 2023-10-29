@@ -54,6 +54,9 @@
 ;;; init-loaderのロード
 (leaf init-loader
   :ensure t
+  :config
+  (setq-default init-loader-show-log-after-init t
+		        init-loader-byte-compile t)
   )
 
 (init-loader-load (locate-user-emacs-file "inits"))
