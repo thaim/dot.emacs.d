@@ -1,1 +1,3 @@
-(el-get-bundle company)
+(leaf company
+  :ensure t
+  )
