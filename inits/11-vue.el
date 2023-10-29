@@ -1,18 +1,33 @@
-(el-get-bundle! 'vue-mode)
+(leaf vue-mode
+  :ensure t
+  :after flycheck add-ndoe-modules-path
+  :config
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+  (flycheck-add-mode 'javascript-eslint 'vue-mode)
+  :hook
+  (vue-mode-hook . flycheck-mode)
+  (vue-mode-hook . add-node-modulespath)
+  )
 
-(el-get-bundle! 'vue-html-mode)
-(el-get-bundle! 'mmm-mode)
-(el-get-bundle! 'ssass-mode)
+(leaf vue-html-mode
+  :ensure t
+  :after flycheck
+  :config
+  (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+  )
 
-(el-get-bundle! 'edit-indirect)
-(el-get-bundle! 'add-node-modules-path)
+(leaf mmm-mode
+  :ensure t)
 
-(add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
-(eval-after-load 'vue-mode
-  '(add-hook 'vue-mode-hook #'add-node-modules-path))
+(leaf ssass-mode
+  :ensure t)
+
+(leaf edit-indirect
+  :ensure t)
+
+(leaf add-node-modules-path
+  :ensure t)
+
 
 ;; flycheck config
-(flycheck-add-mode 'javascript-eslint 'vue-mode)
-(flycheck-add-mode 'javascript-eslint 'vue-html-mode)
 (flycheck-add-mode 'javascript-eslint 'css-mode)
-(add-hook 'vue-mode-hook 'flycheck-mode)

@@ -1,9 +1,12 @@
-(el-get-bundle magit)
+(leaf magit
+  :ensure t
+  :config
+  (setq transient-history-file
+      (expand-file-name "cache/transient/history.el" user-emacs-directory)) ;; store history file in cache dir
+  :bind
+  (("C-x g" . 'magit-status))
+  )
 
-(global-set-key (kbd "C-x g") 'magit-status)
-; store history file in cache dir
-(setq transient-history-file
-      (expand-file-name "cache/transient/history.el" user-emacs-directory))
-
-
-(el-get-bundle! git-modes)
+(leaf git-modes
+  :ensure t
+  )

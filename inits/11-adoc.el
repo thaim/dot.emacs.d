@@ -1,4 +1,5 @@
-(el-get-bundle! adoc-mode)
-
-(add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
-
+(leaf adoc-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist (cons "\\.adoc\\'" 'adoc-mode))
+)

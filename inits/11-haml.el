@@ -1,4 +1,10 @@
-(el-get-bundle! haml-mode)
-(el-get-bundle! flymake-haml)
+(leaf haml-mode
+  :ensure t
+  )
 
-(add-hook 'haml-mode-hook 'flymake-haml-load)
+(leaf flycheck-haml
+  :ensure t
+  :hook
+  (haml-mode-hook . flymake-haml-load)
+  )
+
