@@ -65,11 +65,10 @@
   (indent-tabs-mode . nil)
   (tab-width . 4)
   (c-basic-offset . 4)
+  :config
+  (leaf company-go
+    :ensure t)
   )
-
-
-(el-get-bundle! company-go)
-
 
 ;; copilotの有効化
 (add-hook 'go-mode-hook 'copilot-mode)
