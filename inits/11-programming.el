@@ -45,10 +45,6 @@
   (lsp-ui-doc-enable . t)
   )
 
-(leaf company-lsp
-  :ensure t
-  )
-
 ;;;;
 ;;;; for golang
 ;;;;
