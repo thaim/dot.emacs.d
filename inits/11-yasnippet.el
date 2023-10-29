@@ -1,8 +1,10 @@
 ;;; yasnippet
-(el-get-bundle! yasnippet)
-
-(add-to-list 'yas-snippet-dirs (locate-user-emacs-file "etc/yasnippets"))
-(add-to-list 'yas-snippet-dirs (locate-user-emacs-file "etc/yasnippet-snippets/snippets"))
+(leaf yasnippet
+  :ensure t
+  :config
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "etc/yasnippets"))
+  (add-to-list 'yas-snippet-dirs (locate-user-emacs-file "etc/yasnippet-snippets/snippets"))
+  )
 
 
 (custom-set-variables '(yas-trigger-key "TAB"))
