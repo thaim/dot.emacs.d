@@ -133,6 +133,22 @@
   )
 
 ;;;;
+;;;; for Rust
+;;;;
+(leaf rust-mode
+  :ensure t
+  :init
+  ;; Rust開発に必要なパスのセットアッップ
+  (add-to-list 'exec-path (expand-file-name "~/.local/bin")) ; rust-analyzerのインストールパス
+  (add-to-list 'exec-path (expand-file-name "~/.cargo/bin")) ; cargoのインストールパス
+  :custom ((rust-format-on-save . t))
+
+  (leaf cargo
+    :ensure t
+    :hook (rust-mode . cargo-minor-mode))
+  )
+
+;;;;
 ;;;; for ansible
 ;;;;
 (leaf ansible
