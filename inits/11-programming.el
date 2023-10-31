@@ -49,12 +49,15 @@
 
 (leaf go-mode
   :ensure t
+  :after copilot flycheck
   :bind
   ("M-." . godef-jump)  ; 関数定義にジャンプ
   ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
   :hook
   (before-save-hook . gofmt-before-save)
   (go-mode-hook . lsp-deferred)
+  (go-mode-hook . copilot-mode)
+  (go-mode-hook . flycheck-mode)
   :custom
   (indent-tabs-mode . nil)
   (tab-width . 4)
@@ -64,11 +67,6 @@
     :ensure t)
   )
 
-;; copilotの有効化
-(add-hook 'go-mode-hook 'copilot-mode)
-
-;; flycheck-modeを有効化してシンタックスエラーを検知
-(add-hook 'go-mode-hook 'flycheck-mode)
 (add-hook 'go-mode-hook (lambda()
        (add-hook 'before-save-hook' 'gofmt-before-save)
        (local-set-key (kbd "M-.") 'godef-jump)
