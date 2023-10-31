@@ -124,6 +124,15 @@
   )
 
 ;;;;
+;;;; for Ruby
+;;;;
+(leaf ruby-mode
+  ; ruby-mode はemacsに同梱されている
+  :config
+  (setq ruby-insert-encoding-magic-comment nil) ; 'coding: utf-8'のマジックコメントを自動挿入しない
+  )
+
+;;;;
 ;;;; for ansible
 ;;;;
 (leaf ansible
