@@ -106,13 +106,12 @@
 
 (leaf terraform-mode
   :ensure t
+  :after copilot
   :hook
   (terraform-mode-hook . terraform-format-on-save-mode)
   (terraform-mode-hook . lsp-deferred)
+  (terraform-mode-hook . copilot-mode)
   )
-
-;; copilotの有効化
-(add-hook 'terraform-mode-hook 'copilot-mode)
 
 ;;;;
 ;;;; for Python
