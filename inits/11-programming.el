@@ -9,15 +9,9 @@
            :pkgname "zerolfx/copilot.el"
            )
   :config
-  (leaf editorconfig
-    :ensure t
-    )
-  (leaf s
-    :ensure t
-    )
-  (leaf dash
-    :ensure t
-    )
+  (leaf editorconfig :ensure t)
+  (leaf s :ensure t)
+  (leaf dash :ensure t)
   (defun my/copilot-tab ()
     (interactive)
     (or (copilot-accept-completion)
