@@ -102,6 +102,13 @@
       ))
 
 ;;;;
+;;;; for php
+;;;;
+(leaf php-mode
+  :ensure t
+  )
+
+;;;;
 ;;;; for protocol buffers
 ;;;;
 (leaf protobuf-mode
