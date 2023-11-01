@@ -39,6 +39,14 @@
   (lsp-ui-doc-enable . t)
   )
 
+;;;; for dockerfile
+(leaf dockerfile-mode
+  :ensure t
+  :config
+  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
+  )
+
+
 ;;;;
 ;;;; for golang
 ;;;;
