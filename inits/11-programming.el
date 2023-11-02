@@ -102,6 +102,20 @@
       ))
 
 ;;;;
+;;;; for octave
+;;;;
+(leaf octave-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+  :hook
+  (octave-mode-hook . (lambda ()
+                        (abbrev-mode 1)
+                        (auto-fill-mode 1)
+                        (if (eq window-system 'x)
+                            (font-lock-mode 1))))
+  )
+
+;;;;
 ;;;; for php
 ;;;;
 (leaf php-mode
