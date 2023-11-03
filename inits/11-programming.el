@@ -42,8 +42,6 @@
 ;;;; for dockerfile
 (leaf dockerfile-mode
   :ensure t
-  :config
-  (add-to-list 'auto-mode-alist '("Dockerfile\\'" . dockerfile-mode))
   )
 
 
@@ -199,8 +197,6 @@
 (leaf yaml-mode
   :ensure t
   :config
-  (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
-  (add-to-list 'auto-mode-alist '("\\.yaml$" . yaml-mode))
 
   ;; インデントをハイライトする
   (leaf highlight-indentation
