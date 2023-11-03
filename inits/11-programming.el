@@ -103,8 +103,7 @@
 ;;;; for octave
 ;;;;
 (leaf octave-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.m$" . octave-mode))
+  :mode "\\.m$"
   :hook
   (octave-mode-hook . (lambda ()
                         (abbrev-mode 1)
