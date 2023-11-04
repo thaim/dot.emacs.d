@@ -199,6 +199,13 @@
   )
 
 ;;;;
+;;;; for sql
+;;;;
+(leaf sql-mode
+  :mode "ddl$"
+  )
+
+;;;;
 ;;;; for ansible
 ;;;;
 (leaf ansible
