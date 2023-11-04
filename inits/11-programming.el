@@ -52,6 +52,31 @@
 
 
 ;;;;
+;;;; for C/C++
+;;;;
+(leaf c-mode
+  :config
+  (setq-default c-basic-offset 4
+		tab-width 4
+		indent-tabs-mode nil)
+  :hook
+  ; C言語向けインデント設定
+  (c-mode-hook . (lambda ()
+		   (c-set-style "gnu")
+		   (setq c-basic-offset 4)
+		   (indent-tabs-mode nil)
+		   (setq tab-width 4)
+		   ))
+  ; C++言語向けインデント設定
+  (c++-mode-hook . (lambda ()
+                     (c-set-style "gnu")
+	             (indent-tabs-mode nil)
+	             (setq c-basic-offset 4)
+	             ))
+  )
+
+
+;;;;
 ;;;; for dockerfile
 ;;;;
 (leaf dockerfile-mode
