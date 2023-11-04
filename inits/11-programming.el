@@ -39,7 +39,21 @@
   (lsp-ui-doc-enable . t)
   )
 
+;; for common web (JavaScript/HTML/CSS)
+(leaf web-mode
+  :ensure t
+  :mode "\\.js$" "\\.html$" "\\.css$"
+  :custom
+  ; インデント幅をスペース2つに設定
+  (web-mode-markup-indent-offset . 2)
+  (web-mode-code-indent-offset . 2)
+  (web-mode-css-indent-offset . 2)
+  )
+
+
+;;;;
 ;;;; for dockerfile
+;;;;
 (leaf dockerfile-mode
   :ensure t
   )
@@ -105,6 +119,23 @@
 (leaf groovy-mode
   :ensure t
   :mode "\\Jenkinsfile$"
+  )
+
+
+;;;;
+;;;; for HTML
+;;;;
+(leaf html-mode
+  :mode "\\.html$"
+  :hook
+  (html-mode-hook . xml-mode)
+  )
+
+;;;;
+;;;; for TypeScript
+;;;;
+(leaf typescript-mode
+  :ensure t
   )
 
 
