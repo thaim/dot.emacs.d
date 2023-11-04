@@ -100,6 +100,15 @@
       ))
 
 ;;;;
+;;;; for groovy
+;;;;
+(leaf groovy-mode
+  :ensure t
+  :mode "\\Jenkinsfile$"
+  )
+
+
+;;;;
 ;;;; for markdown
 ;;;;
 (leaf markdown-mode
