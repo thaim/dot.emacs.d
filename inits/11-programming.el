@@ -100,6 +100,14 @@
       ))
 
 ;;;;
+;;;; for markdown
+;;;;
+(leaf markdown-mode
+  :ensure t
+  )
+
+
+;;;;
 ;;;; for octave
 ;;;;
 (leaf octave-mode
