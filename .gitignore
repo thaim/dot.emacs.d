@@ -1,6 +1,7 @@
 # elisp cache
 cache/*
 !cache/.gitkeep
+.cache/*
 
 # elisp files for each emacs version
 v[0-9.]*/

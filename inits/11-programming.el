@@ -9,15 +9,9 @@
            :pkgname "zerolfx/copilot.el"
            )
   :config
-  (leaf editorconfig
-    :ensure t
-    )
-  (leaf s
-    :ensure t
-    )
-  (leaf dash
-    :ensure t
-    )
+  (leaf editorconfig :ensure t)
+  (leaf s :ensure t)
+  (leaf dash :ensure t)
   (defun my/copilot-tab ()
     (interactive)
     (or (copilot-accept-completion)
@@ -45,6 +39,51 @@
   (lsp-ui-doc-enable . t)
   )
 
+;; for common web (JavaScript/HTML/CSS)
+(leaf web-mode
+  :ensure t
+  :mode "\\.js$" "\\.html$" "\\.css$"
+  :custom
+  ; インデント幅をスペース2つに設定
+  (web-mode-markup-indent-offset . 2)
+  (web-mode-code-indent-offset . 2)
+  (web-mode-css-indent-offset . 2)
+  )
+
+
+;;;;
+;;;; for C/C++
+;;;;
+(leaf c-mode
+  :config
+  (setq-default c-basic-offset 4
+		tab-width 4
+		indent-tabs-mode nil)
+  :hook
+  ; C言語向けインデント設定
+  (c-mode-hook . (lambda ()
+		   (c-set-style "gnu")
+		   (setq c-basic-offset 4)
+		   (indent-tabs-mode nil)
+		   (setq tab-width 4)
+		   ))
+  ; C++言語向けインデント設定
+  (c++-mode-hook . (lambda ()
+                     (c-set-style "gnu")
+	             (indent-tabs-mode nil)
+	             (setq c-basic-offset 4)
+	             ))
+  )
+
+
+;;;;
+;;;; for dockerfile
+;;;;
+(leaf dockerfile-mode
+  :ensure t
+  )
+
+
 ;;;;
 ;;;; for golang
 ;;;;
@@ -55,12 +94,15 @@
 
 (leaf go-mode
   :ensure t
+  :after copilot flycheck
   :bind
   ("M-." . godef-jump)  ; 関数定義にジャンプ
   ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
   :hook
   (before-save-hook . gofmt-before-save)
   (go-mode-hook . lsp-deferred)
+  (go-mode-hook . copilot-mode)
+  (go-mode-hook . flycheck-mode)
   :custom
   (indent-tabs-mode . nil)
   (tab-width . 4)
@@ -70,11 +112,6 @@
     :ensure t)
   )
 
-;; copilotの有効化
-(add-hook 'go-mode-hook 'copilot-mode)
-
-;; flycheck-modeを有効化してシンタックスエラーを検知
-(add-hook 'go-mode-hook 'flycheck-mode)
 (add-hook 'go-mode-hook (lambda()
        (add-hook 'before-save-hook' 'gofmt-before-save)
        (local-set-key (kbd "M-.") 'godef-jump)
@@ -102,6 +139,60 @@
       ))
 
 ;;;;
+;;;; for groovy
+;;;;
+(leaf groovy-mode
+  :ensure t
+  :mode "\\Jenkinsfile$"
+  )
+
+
+;;;;
+;;;; for HTML
+;;;;
+(leaf html-mode
+  :mode "\\.html$"
+  :hook
+  (html-mode-hook . xml-mode)
+  )
+
+;;;;
+;;;; for TypeScript
+;;;;
+(leaf typescript-mode
+  :ensure t
+  )
+
+
+;;;;
+;;;; for markdown
+;;;;
+(leaf markdown-mode
+  :ensure t
+  )
+
+
+;;;;
+;;;; for octave
+;;;;
+(leaf octave-mode
+  :mode "\\.m$"
+  :hook
+  (octave-mode-hook . (lambda ()
+                        (abbrev-mode 1)
+                        (auto-fill-mode 1)
+                        (if (eq window-system 'x)
+                            (font-lock-mode 1))))
+  )
+
+;;;;
+;;;; for php
+;;;;
+(leaf php-mode
+  :ensure t
+  )
+
+;;;;
 ;;;; for protocol buffers
 ;;;;
 (leaf protobuf-mode
@@ -114,13 +205,13 @@
 
 (leaf terraform-mode
   :ensure t
+  ; :after copilot-mode lsp-mode
+  :custom
+  (terraform-format-on-save . t)
   :hook
-  (terraform-mode-hook . terraform-format-on-save-mode)
   (terraform-mode-hook . lsp-deferred)
+  (terraform-mode-hook . copilot-mode)
   )
-
-;; copilotの有効化
-(add-hook 'terraform-mode-hook 'copilot-mode)
 
 ;;;;
 ;;;; for Python
@@ -133,10 +224,94 @@
   )
 
 ;;;;
+;;;; for Ruby
+;;;;
+(leaf ruby-mode
+  ; ruby-mode はemacsに同梱されている
+  :config
+  (setq ruby-insert-encoding-magic-comment nil) ; 'coding: utf-8'のマジックコメントを自動挿入しない
+  )
+
+(leaf haml-mode
+  :ensure t
+  :after flycheck
+  :hook
+  (haml-mode-hook . flymake-haml-load)
+  )
+
+;;;;
+;;;; for Rust
+;;;;
+(leaf rust-mode
+  :ensure t
+  :init
+  ;; Rust開発に必要なパスのセットアッップ
+  (add-to-list 'exec-path (expand-file-name "~/.local/bin")) ; rust-analyzerのインストールパス
+  (add-to-list 'exec-path (expand-file-name "~/.cargo/bin")) ; cargoのインストールパス
+  :custom ((rust-format-on-save . t))
+
+  (leaf cargo
+    :ensure t
+    :hook (rust-mode . cargo-minor-mode))
+  )
+
+;;;;
+;;;; for sql
+;;;;
+(leaf sql-mode
+  :mode "ddl$"
+  )
+
+;;;;
 ;;;; for ansible
 ;;;;
 (leaf ansible
   :ensure t
   :hook
   (ansible-mode-hook . lsp)
+  )
+
+;;;;
+;;;; for Vue
+;;;;
+(leaf vue-mode
+  :ensure t
+  :after flycheck add-ndoe-modules-path
+  :config
+  (add-to-list 'auto-mode-alist '("\\.vue\\'" . vue-mode))
+  (flycheck-add-mode 'javascript-eslint 'vue-mode)
+  :hook
+  (vue-mode-hook . flycheck-mode)
+  (vue-mode-hook . add-node-modulespath)
+  )
+
+(leaf vue-html-mode
+  :ensure t
+  :after flycheck
+  :config
+  (flycheck-add-mode 'javascript-eslint 'vue-html-mode)
+  )
+
+(leaf mmm-mode :ensure t)
+(leaf ssass-mode :ensure t)
+(leaf edit-indirect :ensure t)
+(leaf add-node-modules-path :ensure t)
+
+
+;;;;
+;;;; for yaml
+;;;;
+(leaf yaml-mode
+  :ensure t
+  :config
+
+  ;; インデントをハイライトする
+  (leaf highlight-indentation
+    :ensure t
+    :config
+    (set-face-background 'highlight-indentation-face "#e3e3d3")
+    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+    :hook
+    (yaml-mode-hook . highlight-indentation-mode)
+    )
   )
