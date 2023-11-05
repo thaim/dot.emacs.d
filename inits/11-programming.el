@@ -205,9 +205,10 @@
 
 (leaf terraform-mode
   :ensure t
-  :after copilot
+  ; :after copilot-mode lsp-mode
+  :custom
+  (terraform-format-on-save . t)
   :hook
-  (terraform-mode-hook . terraform-format-on-save-mode)
   (terraform-mode-hook . lsp-deferred)
   (terraform-mode-hook . copilot-mode)
   )
