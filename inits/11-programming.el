@@ -26,7 +26,6 @@
   :init (yas-global-mode)
   :hook
   (rust-mode-hook . lsp)
-  (go-mode-hook . lsp)
   :bind ("C-c h" . lsp-describe-thing-at-point)
   :custom (lsp-rust-server 'rust-analyzer))
 
@@ -95,7 +94,6 @@
 
 (leaf go-mode
   :ensure t
-  :after copilot flycheck
   :bind
   ("M-." . godef-jump)  ; 関数定義にジャンプ
   ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
