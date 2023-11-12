@@ -23,7 +23,6 @@
 ;; lsp-mode
 (leaf lsp-mode
   :ensure t
-  :init (yas-global-mode)
   :hook
   (rust-mode-hook . lsp)
   :bind ("C-c h" . lsp-describe-thing-at-point)
