@@ -23,8 +23,6 @@
 ;; lsp-mode
 (leaf lsp-mode
   :ensure t
-  :hook
-  (rust-mode-hook . lsp)
   :bind ("C-c h" . lsp-describe-thing-at-point)
   :custom (lsp-rust-server 'rust-analyzer))
 
@@ -247,6 +245,9 @@
   (add-to-list 'exec-path (expand-file-name "~/.local/bin")) ; rust-analyzerのインストールパス
   (add-to-list 'exec-path (expand-file-name "~/.cargo/bin")) ; cargoのインストールパス
   :custom ((rust-format-on-save . t))
+  :hook
+  (rust-mode-hook . lsp-deferred)
+  :config
 
   (leaf cargo
     :ensure t
