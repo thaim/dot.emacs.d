@@ -1,4 +1,6 @@
 ;; org-ai
+; require org-ai-openai-token for API key
+
 (leaf org-ai
   :ensure t
   :commands (org-ai-mode
@@ -7,7 +9,9 @@
   (add-hook 'org-mode-hook #'org-ai-mode)
   )
 
+
 ;; todoist
+; require todoist-token for API key
 (leaf todoist
   :ensure t
   )
