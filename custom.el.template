@@ -1,0 +1,5 @@
+;; API token for org-ai
+;(setq org-ai-openai-api-token "")
+
+;; API token for todoist
+; (setq todoist-token "")
