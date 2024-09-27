@@ -84,6 +84,11 @@
 (setq default-frame-alist initial-frame-alist)
 (setq truncate-partial-width-windows nil) ;split-windowもで文字の折り返しを有効にする
 
+
+;;;タブ設定(旧elscreen)
+(tab-bar-mode 1)
+
+
 ;;;モード
 ;;ファイルとの関連付け
 ;;appendを用いて記述するとなぜか関係無い所でエラーが起こる．現在原因究明中
