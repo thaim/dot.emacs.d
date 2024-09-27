@@ -2,4 +2,7 @@
 ;(setq org-ai-openai-api-token "")
 
 ;; API token for todoist
-; (setq todoist-token "")
+;(setq todoist-token "")
+
+;; API token for wakatime
+;(setq wakatime-api-key "")
