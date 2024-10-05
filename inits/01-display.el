@@ -86,8 +86,15 @@
 
 
 ;;;タブ設定(旧elscreen)
-(tab-bar-mode 1)
-
+(leaf tab-bar
+  :ensure t
+  :bind
+  (("C-o C-c" . tab-new)
+   ("C-o C-k" . tab-close)
+   ("C-o C-l" . tab-next)
+   ("C-o C-h" . tab-previous))
+  :config
+  (tab-bar-mode 1))
 
 ;;;モード
 ;;ファイルとの関連付け
