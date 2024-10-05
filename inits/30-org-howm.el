@@ -38,7 +38,7 @@
 ;;; org-mode
 
 (leaf org
-  ensure: t
+  :ensure t
   :mode ("\\.howm$")
   :hook
   (org-mode-hook . howm-mode)
