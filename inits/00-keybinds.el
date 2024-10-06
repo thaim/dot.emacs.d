@@ -5,6 +5,7 @@
 (windmove-default-keybindings)		      ;分割ウインドウを[Shift + カーソルキー]で移動
 (global-set-key [(control t)] '(lambda () (interactive) (recenter 3))) ;現在のカーソル位置を先頭に
 (global-set-key "\C-xp" (lambda () (interactive) (other-window -1))) ;分割ウインドウを逆順に移動
+(global-unset-key (kbd "C-o")) ; C-o (旧open-line)はタブ操作に利用したいので割り当て解除する
 
 (cond
  ((eq system-type 'darwin)
