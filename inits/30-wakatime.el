@@ -2,6 +2,7 @@
 
 (leaf wakatime-mode
   :ensure t
+  :when (boundp 'wakatime-api-key)
   )
 
 (global-wakatime-mode)

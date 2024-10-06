@@ -6,6 +6,7 @@
   :custom
   (howm-directory . "~/Dropbox/documents/howm") ;howmディレクトリ
   (howm-file-name-format . "%Y/%m/%Y-%m-%d-%H%M%S.howm")
+  (howm-menu-file . "~/Dropbox/documents/howm/0000-00-00-000000.txt") ;デフォルト値のままだが指定しておく
   (howm-keyword-file . "~/Dropbox/documents/howm/.howm-keys") ;キーワードリスト
   ; howm-history-file "~/docs/howm/history"
   ; setq-default howm-directory "~/docs/howm/"
@@ -37,7 +38,7 @@
 ;;; org-mode
 
 (leaf org
-  ensure: t
+  :ensure t
   :mode ("\\.howm$")
   :hook
   (org-mode-hook . howm-mode)
