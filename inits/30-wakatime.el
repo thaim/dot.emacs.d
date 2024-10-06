@@ -3,6 +3,7 @@
 (leaf wakatime-mode
   :ensure t
   :when (boundp 'wakatime-api-key)
+  :config
+  (global-wakatime-mode)
   )
 
-(global-wakatime-mode)
