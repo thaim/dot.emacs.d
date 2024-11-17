@@ -7,8 +7,8 @@
   (if (null (x-list-fonts  font)) nil t))
 
 ;;;フォント
-(if (font-exists-p "HackGen-12")
-    (set-frame-font "HackGen-12"))
+(if (font-exists-p "HackGen")
+    (set-frame-font "HackGen"))
 
 ;;; emacsclientから起動したファイルを閉じるときに確認しない
 (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)
