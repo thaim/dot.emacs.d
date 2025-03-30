@@ -85,7 +85,7 @@
 (setq truncate-partial-width-windows nil) ;split-windowもで文字の折り返しを有効にする
 
 
-;;;タブ設定(旧elscreen)
+;;;タブ設定
 (leaf tab-bar
   :ensure t
   :bind
@@ -93,6 +93,9 @@
    ("C-o C-k" . tab-close)
    ("C-o C-l" . tab-next)
    ("C-o C-h" . tab-previous))
+  :custom-face
+  (tab-bar-tab . '((t (:background "dark slate blue" :foreground "white"))))
+  (tab-bar-tab-interactive . '((t (:background "gray30" :foreground "light gray"))))
   :config
   (tab-bar-mode 1))
 
