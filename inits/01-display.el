@@ -22,6 +22,7 @@
 (setq hl-line-face 'underline)		;現在の行の強調に下線を利用
 (set-face-background 'hl-line "darkolivegreen")	;現在の行につける色の指定
 (show-paren-mode 1)				;対応する括弧を強調表示
+(global-subword-mode 1)			;camelCaseの単語境界を認識
 (setq-default show-trailing-whitespace t)	;行末の空白を強調表示
 (savehist-mode 1)			;履歴を次回Emacs起動時にも保存
 (setq history-length 1000)		;履歴の保存数
