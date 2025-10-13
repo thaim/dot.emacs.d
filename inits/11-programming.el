@@ -318,3 +318,13 @@
   :hook
   (yaml-mode-hook . highlight-indentation-mode))
 
+;;;;
+;;;; for rego
+;;;;
+(leaf rego-mode
+  :ensure t
+  :config
+  (let ((opa-path (executable-find "opa")))
+    (when opa-path
+      (setq rego-repl-executable opa-path)
+      (setq rego-opa-command opa-path))))
