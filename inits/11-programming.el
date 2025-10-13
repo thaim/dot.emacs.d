@@ -303,7 +303,11 @@
 ;;;; for yaml
 ;;;;
 (leaf yaml-mode
-  :ensure t)
+  :ensure t
+  :mode (("\\.yml$" . yaml-mode)
+         ("\\.yaml$" . yaml-mode)
+         ("\\.yml\\." . yaml-mode)
+         ("\\.yaml\\." . yaml-mode)))
 
 ;; インデントをハイライトする
 (leaf highlight-indentation
