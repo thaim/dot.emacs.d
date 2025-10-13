@@ -38,7 +38,7 @@
 ;; for common web (JavaScript/HTML/CSS)
 (leaf web-mode
   :ensure t
-  :mode "\\.js$" "\\.html$" "\\.css$"
+  :mode "\\.js$" "\\.html$" "\\.css$" "\\.ts$"
   :custom
   ; インデント幅をスペース2つに設定
   (web-mode-markup-indent-offset . 2)
