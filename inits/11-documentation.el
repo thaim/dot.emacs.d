@@ -9,8 +9,9 @@
   (ispell-really-hunspell t)
   :config
   (setenv "DICTIONARY" "en_US")
+  (add-to-list 'ispell-skip-region-alist '("[^\000-\377]+"))
   :hook
-  ((markdown-mode howm-mode) . flyspell-mode))
+  ((markdown-mode) . flyspell-mode))
 
 ; TODO leafで設定するとispellの実行時にエラーになる
 ;; (leaf flyspell
