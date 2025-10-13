@@ -38,7 +38,7 @@
 ;; for common web (JavaScript/HTML/CSS)
 (leaf web-mode
   :ensure t
-  :mode "\\.js$" "\\.html$" "\\.css$"
+  :mode "\\.js$" "\\.html$" "\\.css$" "\\.ts$"
   :custom
   ; インデント幅をスペース2つに設定
   (web-mode-markup-indent-offset . 2)
@@ -157,6 +157,8 @@
 ;;;;
 (leaf typescript-mode
   :ensure t
+  :config
+  (setq typescript-indent-level 2)
   )
 
 
@@ -302,15 +304,27 @@
 ;;;;
 (leaf yaml-mode
   :ensure t
-  :config
+  :mode (("\\.yml$" . yaml-mode)
+         ("\\.yaml$" . yaml-mode)
+         ("\\.yml\\." . yaml-mode)
+         ("\\.yaml\\." . yaml-mode)))
 
-  ;; インデントをハイライトする
-  (leaf highlight-indentation
-    :ensure t
-    :config
-    (set-face-background 'highlight-indentation-face "#e3e3d3")
-    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-    :hook
-    (yaml-mode-hook . highlight-indentation-mode)
-    )
-  )
+;; インデントをハイライトする
+(leaf highlight-indentation
+  :ensure t
+  :config
+  (set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+  :hook
+  (yaml-mode-hook . highlight-indentation-mode))
+
+;;;;
+;;;; for rego
+;;;;
+(leaf rego-mode
+  :ensure t
+  :config
+  (let ((opa-path (executable-find "opa")))
+    (when opa-path
+      (setq rego-repl-executable opa-path)
+      (setq rego-opa-command opa-path))))
