@@ -303,16 +303,14 @@
 ;;;; for yaml
 ;;;;
 (leaf yaml-mode
+  :ensure t)
+
+;; インデントをハイライトする
+(leaf highlight-indentation
   :ensure t
   :config
+  (set-face-background 'highlight-indentation-face "#e3e3d3")
+  (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
+  :hook
+  (yaml-mode-hook . highlight-indentation-mode))
 
-  ;; インデントをハイライトする
-  (leaf highlight-indentation
-    :ensure t
-    :config
-    (set-face-background 'highlight-indentation-face "#e3e3d3")
-    (set-face-background 'highlight-indentation-current-column-face "#c3b3b3")
-    :hook
-    (yaml-mode-hook . highlight-indentation-mode)
-    )
-  )
