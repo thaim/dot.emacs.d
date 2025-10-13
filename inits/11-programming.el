@@ -3,6 +3,7 @@
 ;;;;
 
 ;; GitHub Copilot
+;; run M-x copilot-login to login
 (leaf copilot
   :el-get (copilot
            :type github
