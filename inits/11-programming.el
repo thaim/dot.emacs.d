@@ -157,6 +157,8 @@
 ;;;;
 (leaf typescript-mode
   :ensure t
+  :config
+  (setq typescript-indent-level 2)
   )
 
 
