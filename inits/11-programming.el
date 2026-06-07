@@ -35,6 +35,11 @@
   (lsp-ui-doc-enable . t)
   )
 
+;; git
+(leaf diff-hl
+  :ensure t
+  :global-minor-mode global-diff-hl-mode)
+
 ;; for common web (JavaScript/HTML/CSS)
 (leaf web-mode
   :ensure t
