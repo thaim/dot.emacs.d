@@ -4,7 +4,9 @@
 
 ;;check if target font exist
 (defun font-exists-p (font)
-  (if (null (x-list-fonts  font)) nil t))
+  (if (display-graphic-p)
+      (if (null (x-list-fonts  font)) nil t)
+      nil))
 
 ;;;フォント
 (if (font-exists-p "HackGen")

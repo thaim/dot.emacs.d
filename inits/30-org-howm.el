@@ -2,9 +2,9 @@
 (leaf howm
   :ensure t
   :bind
-  ("C-c , ," . howm-menu)
+  (("C-c , ," . howm-menu))
   :custom
-  (howm-directory . "~/Dropbox/documents/howm") ;howmディレクトリ
+  ((howm-directory . "~/Dropbox/documents/howm") ;howmディレクトリ
   (howm-file-name-format . "%Y/%m/%Y-%m-%d-%H%M%S.howm")
   (howm-menu-file . "~/Dropbox/documents/howm/0000-00-00-000000.txt") ;デフォルト値のままだが指定しておく
   (howm-keyword-file . "~/Dropbox/documents/howm/.howm-keys") ;キーワードリスト
@@ -18,7 +18,7 @@
   (howm-menu-schedule-days-before . 21) ;メニューの予定表の表示範囲
   (howm-menu-schedule-days . 7) ;スケジュールを表示する日数
   (howm-view-summary-persistent . nil) ;RET でファイルを開く際, 一覧バッファを消す.C-u RET なら残る.
-  (howm-todo-menu-types . "[-+~!]") ;完了済みToDoは非表示
+  (howm-todo-menu-types . "[-+~!]")) ;完了済みToDoは非表示
 )
 
 ;; 内容が 0 ならファイルごと削除する
@@ -45,5 +45,9 @@
   :custom
   ; orgファイルを開いたときは第2レベルまで開いた状態にする
   ; https://orgmode.org/manual/Initial-visibility.html
-  (org-startup-folded . 'show2levels)
+  ((org-startup-folded . 'show2levels))
   )
+
+(leaf org-pomodoro
+  :ensure t
+)

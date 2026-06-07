@@ -24,7 +24,7 @@
 ;; lsp-mode
 (leaf lsp-mode
   :ensure t
-  :bind ("C-c h" . lsp-describe-thing-at-point)
+  :bind (("C-c h" . lsp-describe-thing-at-point))
   :custom (lsp-rust-server 'rust-analyzer))
 
 
@@ -93,8 +93,8 @@
 (leaf go-mode
   :ensure t
   :bind
-  ("M-." . godef-jump)  ; 関数定義にジャンプ
-  ("M-*" . pop-tag-mark)  ; ジャンプ元に戻る
+  (("M-." . godef-jump)  ; 関数定義にジャンプ
+   ("M-*" . pop-tag-mark))  ; ジャンプ元に戻る
   :hook
   (before-save-hook . gofmt-before-save)
   (go-mode-hook . lsp-deferred)

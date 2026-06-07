@@ -1,3 +1,6 @@
+; (setq warning-minimum-level :debug)
+; (setq debug-on-error t)
+
 ;;; インストールパスの設定.emacsのバージョンごとのディレクトリに作成する
 ;; el-get経由はv24.4.1/el-get, elpa経由はv24.4.1/elpaに作成する
 (let ((versioned-dir (locate-user-emacs-file (format "v%s" emacs-version))))
@@ -56,7 +59,7 @@
   :ensure t
   :config
   (setq-default init-loader-show-log-after-init t
-		        init-loader-byte-compile t)
+		        init-loader-byte-compile nil) ;; temporary t -> nil
+  (init-loader-load (locate-user-emacs-file "inits"))
   )
 
-(init-loader-load (locate-user-emacs-file "inits"))
