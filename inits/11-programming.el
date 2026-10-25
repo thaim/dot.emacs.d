@@ -21,6 +21,16 @@
     (define-key copilot-mode-map (kbd "<tab>") #'my/copilot-tab))
   )
 
+;; Claude Code IDE integration
+;; requires claude CLI in PATH
+(leaf vterm :ensure t)
+(leaf claude-code-ide
+  :vc (:url "https://github.com/manzaltu/claude-code-ide.el")
+  :bind (("C-c C-'" . claude-code-ide-menu))
+  :config
+  (claude-code-ide-emacs-tools-setup)
+  )
+
 ;; lsp-mode
 (leaf lsp-mode
   :ensure t
